@@ -1,0 +1,277 @@
+{%load staticfiles%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MEC-MH</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+ 
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css"  href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome/css/font-awesome.css' %}">
+
+    <!-- Slider
+    ================================================== -->
+    <link href="{% static 'css/owl.carousel.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'css/owl.theme.css' %}" rel="stylesheet" media="screen">
+
+    <!-- Stylesheet
+    ================================================== -->
+    <link rel="stylesheet" type="text/css"  href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+
+    <script type="text/javascript" src="{% static 'js/modernizr.custom.js' %}"></script>
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}"/>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->    <script type="text/javascript" src="{% static 'js/jquery.1.11.1.js' %}"></script>
+
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/daterangepicker.css' %}" />
+      <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+      <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="{% static 'js/moment.js' %}"></script>
+      <script type="text/javascript" src="{% static 'js/daterangepicker.js' %}"></script>
+  </head>
+  <body>
+<!-- Navigation
+    ==========================================-->
+    <nav id="tf-menu" class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="..">MEC-MH</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+ <ul class="nav navbar-nav navbar-right">
+            <li ><a href=".." class="page-scroll">{{ name }}</a></li>
+            <li><a href="gallery"  class="page-scroll">gallery</a></li>
+            <li><a href="studentscorner"  class="page-scroll">students corner</a></li>
+            <li><a href="mess" class="page-scroll">mess</a></li>
+            <li class="active"><a href="contact"  class="page-scroll">contact</a></li>
+            {% if user.is_authenticated %}
+            <li id="loginor"><a href="{% url 'logout' %}" id="loginorsignup">Logout</a></li>
+            {% else %}
+            <li id="loginor"><a href="{% url 'login' %}" id="loginorsignup">login/signup</a></li>
+            {% endif %}
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <!-- Home Page
+    ==========================================-->
+    <div id="tf-homemess" class="text-center">
+        <div class="overlay whiteback2" id="whitetext">
+            <div class="content">
+            <div id="blackback">
+                <h1><span class="color"><strong>mess</strong></span> by and for students</h1>
+              <p>This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.This book is a treatise on the theory of ethics, very popular during tha treatise on the theory of ethics, very popular during the  Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p> 
+              </div>
+            </div>
+        </div>
+    </div>
+        <!-- notification Page
+    ==========================================-->
+    <div id="tf-about">
+        <div class="container whiteback1">
+                <div class="row text-center">
+                <div class="section-title center makefree1 text-center">
+                            <h2 id="greytext"> <strong>about</strong> mess</h2>
+                            <div class="line">
+                                
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                </div>
+                <div class="row">
+                <div class="col-md-4 col-sm-12 service text-center">
+                     <img src="{% static 'img/simple.png' %}">
+                     <p id="greytext"><strong><br>Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,</strong></p>
+
+                </div>
+
+                <div class="col-md-4 col-sm-12 service text-center">
+                   <img src="{% static 'img/simple.png' %}">
+                     <p id="greytext"><strong><br>Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,</strong></p>
+
+                </div>
+                                <div class="col-md-4 col-sm-12 service text-center">
+                    <img src="{% static 'img/simple.png' %}">
+                     <p id="greytext"><strong><br>Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,</strong></p>
+                </div>
+            </div>
+        
+    </div>
+</div>
+<!-- grey
+    ==========================================-->
+     <div id="tf-home2" class="text-center">
+        <div class="overlay1">
+            <div class="container whiteback">
+                 <div class="row">
+                        <div class="row whiteback1">
+                            <div class="col-md-12 col-sm-24 service" div id="alignleft">
+                                    <div class="section-title" id="alignleft">
+                                       <div id="whitetext"><h2 id="greytexth2">mess <strong>RULES</strong></h2> <h4></h4></div> 
+                                        <hr>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                <ul id="whitetext" class="about-list2"><li>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section </li><li>1.10.32.Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very 
+                                </li><li>popularduring the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section</li><li> 1.10.32.Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular </li><li>during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</li></ul>
+                            </div>
+                            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+            <!-- notification Page
+    ==========================================-->
+    <div id="tf-about">
+        <div class="container">
+                        <div class="row text-center">
+                <div class="section-title center makefree1 text-center">
+                            <h2 id="greytext"> <strong>apply</strong> messcuts</h2>
+                            <div class="line">
+                                
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-12 service" id="greyback">
+                                <div class="section-title center text-center">
+                            <h2 id="greytext"> <strong></strong>instructions<br></h2>
+                            <div class="line">
+                                
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                     <ul id="greytext" class="about-list2"><li>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section </li><li>1.10.32.Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very 
+                                </li><li>popularduring the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section</li><li> 1.10.32.Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular </li><li>during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</li></ul>
+
+                </div>
+
+                <div class="col-md-6 col-sm-12 service text-center" id="padleft">
+                                                <div class="section-title center text-center">
+                            <h2 id="greytext">select <strong>dates </strong><br></h2>
+                            <div class="line">
+                                
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                <div id="row1">
+                                <input id="datesel" type="text" name="daterange" value="01/01/2015 - 01/31/2015" />
+            <script type="text/javascript">
+              $(function() {
+                  $('input[name="daterange"]').daterangepicker();
+              });
+            </script>
+                </div> 
+                <div id="padtop">
+                         <button type="button" class="btn btn-default" id="padl">No of days: </button>
+                        <button type="button" class="btn btn-info">Submit</button>
+                </div>
+                            <div class="rowstatus">
+
+                                            <div class="section-title center text-center">
+                            <h2 id="greytext"> <strong>status</strong> of messcut<br></h2>
+                            <div class="line">
+                                
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                                <div id="status">
+                    <table class="table table-hover">
+                              <thead>
+                                <tr>
+                                  <th id="top">No</th>
+                                  <th id="top">Start date</th>
+                                  <th id="top">End Date</th>
+                                  <th id="top">No of days</th>
+                                  <th id="top">Status</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th scope="row">1</th>
+                                  <td>Mark</td>
+                                  <td>Otto</td>
+                                  <td>@mdo</td>
+                                  <td>Accepted</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">2</th>
+                                  <td>Jacob</td>
+                                  <td>Thornton</td>
+                                  <td>@fat</td>
+                                  <td>Accepted</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">3</th>
+                                  <td colspan="2">Larry the Bird</td>
+                                  <td>@twitter</td>
+                                  <td>Accepted</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                </div>
+            </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+     <!-- Footer Section
+    ==========================================-->
+    <nav id="footer">
+        <div class="container">
+            <div class="pull-left fnav">
+                <p>ALL RIGHTS RESERVED. COPYRIGHT © 2014. </p>
+            </div>
+            <div class="pull-right fnav">
+                <ul class="footer-social">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav
+    
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/SmoothScroll.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.isotope.js' %}"></script>
+
+    <script src="{% static 'js/owl.carousel.js' %}"></script>
+
+    <!-- Javascripts
+    ================================================== -->
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>
