@@ -2,7 +2,8 @@ from django.contrib.auth import authenticate, login as user_login, logout as use
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
-from mhsite.core.forms import LoginForm, SignUpForm
+from .forms import LoginForm, SignUpForm
+from .models import MessCut
 
 def index(request):
     if request.user.is_authenticated():
@@ -57,10 +58,32 @@ def signup(request):
 
 def mess(request):
     if request.user.is_authenticated():
-        name = request.user.username
+        status_cuts = []
+        user_id = request.user.id
+        mess_cuts = MessCut.objects.filter(user_id=user_id)
+        for i, mess_cut in enumerate(mess_cuts):
+            if mess_cut.status == False:
+                status_cuts.append((mess_cut, "Pending"))
+        status = True
     else:
-        name = "Home"
-    return render(request, "core/mess.html", {'name': name})
+        mess_cuts = []
+        status = False
+    name = "Home"
+
+    if request.method == "POST":
+        mess = MessCut()
+        mess.user_id = request.user.id
+        mess.start_date = request.POST["startdate"]
+        mess.end_date = request.POST["enddate"]
+        mess.days = int(request.POST["noofdays"])
+        result = mess.save()
+        print(result)
+        return redirect('/mess')
+    else:
+        return render(request, "core/mess.html", {'name': name, 
+                                                    'mess_cuts': status_cuts, 'status': status})
+
+
 
 def contact(request):
     if request.user.is_authenticated():

@@ -145,6 +145,18 @@
 
             <!-- notification Page
     ==========================================-->
+{% if not status %}
+<div id="tf-about">
+        <div class="container">
+                        <div class="row text-center">
+                <div class="section-title center makefree1 text-center">
+                            <h2 id="greytext"> <strong>apply</strong> messcuts</h2>
+                                <h3 id="greytext" style="padding:20px; display:inline-block">Login to apply MessCuts</h3>
+                        </div>
+                </div>
+    </div>
+</div>
+    {% else %}
     <div id="tf-about">
         <div class="container">
                         <div class="row text-center">
@@ -184,12 +196,19 @@
               $(function() {
                   $('input[name="daterange"]').daterangepicker();
               });
+
             </script>
                 </div> 
                 <div id="padtop">
-                         <button type="button" class="btn btn-default" id="padl">No of days: </button>
-                        <button type="button" class="btn btn-info">Submit</button>
+                        <form method="post" action="{% url 'mess' %}" role="form">
+                            {% csrf_token %}
+                            <input type="date" name="startdate" id="start_date" class="center-block" style="display: block; margin:10px 10px 10px 200px; border-radius: 10px">
+                            <input type="date" name="enddate" id="end_date" class="center-block" style="display: block; margin:10px 10px 10px 200px; border-radius: 10px">
+                            <input type="number" name="noofdays" id="mess_cut_days" class="center-block" style="margin:10px 10px 10px 19o0px; border-radius: 10px">
+                            <button type="submit" class="btn btn-info">Submit</button>
+                        </form>
                 </div>
+
                             <div class="rowstatus">
 
                                             <div class="section-title center text-center">
@@ -200,6 +219,9 @@
                             <div class="clearfix"></div>
                         </div>
                                 <div id="status">
+                    {% if mess_cuts|length == 0 %}
+                    <p>You haven't applied any messcuts</p>
+                    {% else %}
                     <table class="table table-hover">
                               <thead>
                                 <tr>
@@ -211,28 +233,19 @@
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr>
-                                  <th scope="row">1</th>
-                                  <td>Mark</td>
-                                  <td>Otto</td>
-                                  <td>@mdo</td>
-                                  <td>Accepted</td>
-                                </tr>
-                                <tr>
-                                  <th scope="row">2</th>
-                                  <td>Jacob</td>
-                                  <td>Thornton</td>
-                                  <td>@fat</td>
-                                  <td>Accepted</td>
-                                </tr>
-                                <tr>
-                                  <th scope="row">3</th>
-                                  <td colspan="2">Larry the Bird</td>
-                                  <td>@twitter</td>
-                                  <td>Accepted</td>
-                                </tr>
+                                {% for mess_cut in mess_cuts %}
+                                  <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td>{{ mess_cut.0.start_date }}</td>
+                                    <td>{{ mess_cut.0.end_date }}</td>
+                                    <td>{{ mess_cut.0.days }}</td>
+                                    <td>{{ mess_cut.1 }}</td>
+                                  </tr>
+                                {% endfor %}
                               </tbody>
                             </table>
+                    {% endif %}
+                    {% endif %}
                 </div>
             </div>
 
