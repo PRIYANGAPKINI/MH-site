@@ -202,9 +202,9 @@
                 <div id="padtop">
                         <form method="post" action="{% url 'mess' %}" role="form">
                             {% csrf_token %}
-                            <input type="date" name="startdate" id="start_date" class="center-block" style="display: block; margin:10px 10px 10px 200px; border-radius: 10px">
-                            <input type="date" name="enddate" id="end_date" class="center-block" style="display: block; margin:10px 10px 10px 200px; border-radius: 10px">
-                            <input type="number" name="noofdays" id="mess_cut_days" class="center-block" style="margin:10px 10px 10px 19o0px; border-radius: 10px">
+                            <input type="date" name="startdate" id="start_date" class="center-block" style="display: block; margin:10px 10px 10px 190px; border-radius: 10px">
+                            <input type="date" name="enddate" id="end_date" class="center-block" style="display: block; margin:10px 10px 10px 190px; border-radius: 10px">
+                            <input type="number" placeholder="days" name="noofdays" id="mess_cut_days" class="center-block" style="margin:10px 10px 10px 180px; border-radius: 10px">
                             <button type="submit" class="btn btn-info">Submit</button>
                         </form>
                 </div>

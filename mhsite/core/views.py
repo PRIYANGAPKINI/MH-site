@@ -60,13 +60,14 @@ def mess(request):
     if request.user.is_authenticated():
         status_cuts = []
         user_id = request.user.id
-        mess_cuts = MessCut.objects.filter(user_id=user_id)
+        mess_cuts = MessCut.objects.filter(user_id=user_id)[::-1]
+        mess_cuts = mess_cuts[:5]
         for i, mess_cut in enumerate(mess_cuts):
             if mess_cut.status == False:
                 status_cuts.append((mess_cut, "Pending"))
         status = True
     else:
-        mess_cuts = []
+        status_cuts = []
         status = False
     name = "Home"
 
