@@ -15,11 +15,13 @@ def index(request):
 def login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
+        print(form)
         if not form.is_valid():
-            return render(request, 'core/login.html', {'form': form})
-        else:
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
+            # return render(request, 'core/login.html', {'form': form})
+            pass
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password')
+        print(username, password, "#$#")
         user = authenticate(username=username, password=password)
         if user is not None:
             user_login(request, user)
@@ -65,6 +67,8 @@ def mess(request):
         for i, mess_cut in enumerate(mess_cuts):
             if mess_cut.status == False:
                 status_cuts.append((mess_cut, "Pending"))
+            else:
+                status_cuts.append((mess_cut, "Paid"))
         status = True
     else:
         status_cuts = []

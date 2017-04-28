@@ -7,10 +7,10 @@ from .models import MessCut
 class LoginForm(forms.ModelForm):
     username = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'form-control'}),
+        max_length=30,
         required=True)
     password = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
-        required=True)
+        widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = User
