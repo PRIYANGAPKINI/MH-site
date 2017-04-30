@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login as user_login, logout as use
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
-from .forms import LoginForm, SignUpForm
+from .forms import SignUpForm
 from .models import MessCut
 
 def index(request):
@@ -13,24 +13,20 @@ def index(request):
     return render(request, "core/index.html", {'name': name})
 
 def login(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        print(form)
-        if not form.is_valid():
-            # return render(request, 'core/login.html', {'form': form})
-            pass
-        username = form.cleaned_data.get('username')
-        password = form.cleaned_data.get('password')
-        print(username, password, "#$#")
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            user_login(request, user)
-            return redirect('/')
+    if not request.user.is_authenticated:
+        if request.method == 'POST':
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                user_login(request, user)
+                return redirect('/')
+            else:
+                return redirect('/login')    
         else:
-            return redirect('/login')    
+            return render(request, 'core/login.html')    
     else:
-        form = LoginForm()
-        return render(request, 'core/login.html', {'form': form})    
+        return redirect('/') 
 
 
 def logout(request):

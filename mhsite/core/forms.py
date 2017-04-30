@@ -2,27 +2,6 @@ from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
-from .models import MessCut
-
-class LoginForm(forms.ModelForm):
-    username = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
-        max_length=30,
-        required=True)
-    password = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class': 'form-control'}))
-
-    class Meta:
-        model = User
-        fields = ['username', 'password']
-
-    def __init__(self, *args, **kwargs):
-        super(LoginForm, self).__init__(*args, **kwargs) 
-
-    def clean(self):
-        super(LoginForm, self).clean()
-        return self.cleaned_data
-
 class SignUpForm(forms.ModelForm):
     username = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'form-control'}),

@@ -105,11 +105,13 @@
                 <div class="login">
                     <form method="post" action = "{% url 'login' %}" role="form">
                         {% csrf_token %}
-                        {% for field in form %}
-                        <label for="{{field.label}}" style="margin:10px">{{ field.label }}</label>
-                        {{ field }}
-                        {% endfor %}
-                        <button type="submit" class="btn btn-primary" style="padding:15px 60px; margin:20px">Login</button>
+                        <br>
+                        Username: <input type="text" name="username" placeholder="enter your username"/> <br>
+                        <br>
+                        Password: <input type="Password" name="password" placeholder="enter your password"/> <br>
+                        <br>
+                        <button type="submit" class="btn btn-block btn-info">Login</button>
+                        <br>    
                     </form>
                     <a href="{% url 'signup' %}" class = "btn btn-link">Sign up for MH-Site</a>
                 </div> 
